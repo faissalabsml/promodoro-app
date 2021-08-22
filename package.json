@@ -5,7 +5,7 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel-bundler parcel build index.html --no-minify"
   },
   "author": "Faissal Absml",
   "license": "ISC",
