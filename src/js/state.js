@@ -10,9 +10,9 @@ import { updateUISettings } from "./settingsPopup";
 
 export let state = {
   // All times in seconds
-  promodoro: 5,
-  shortBreak: 3,
-  longBreak: 10,
+  promodoro: 1500,
+  shortBreak: 300,
+  longBreak: 1200,
   currentInterval: "promodoro",
   currentTimer: 0,
   promodoroCount: 0,
