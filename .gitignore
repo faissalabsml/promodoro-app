@@ -1,7 +1,6 @@
 *.fig
 
 
-dist/
 node_modules/
 .prettierignore/
 .parcel-cache/
