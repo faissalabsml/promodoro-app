@@ -1,11 +1,11 @@
 {
   "name": "pomodoro-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Another promodoro app",
   "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel-bundler parcel build index.html --no-minify"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Faissal Absml",
   "license": "ISC",
