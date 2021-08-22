@@ -143,7 +143,33 @@ var updateProgressRing = function updateProgressRing() {
 };
 
 exports.updateProgressRing = updateProgressRing;
-},{"./state.js":"src/js/state.js"}],"src/js/countdown.js":[function(require,module,exports) {
+},{"./state.js":"src/js/state.js"}],"src/js/notification.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.showNotification = void 0;
+
+var _state = require("./state");
+
+var showNotification = function showNotification() {
+  var notification = new Notification("Promodoro App", {
+    body: "".concat(_state.state.currentInterval, " has finished"),
+    icon: "./src/assets/favicon-32x32.png"
+  });
+};
+
+exports.showNotification = showNotification;
+Notification.requestPermission(); // if (Notification.permission === "granted") {
+//   showNotification();
+// }
+// if (Notification.permission !== "denied") {
+//   Notification.requestPermission().then((permission) => {
+//     if (permission === "granted") showNotification();
+//   });
+// }
+},{"./state":"src/js/state.js"}],"src/js/countdown.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -156,6 +182,8 @@ var _state = require("./state.js");
 var _optionsView = require("./optionsView.js");
 
 var _progressRingView = require("./progressRingView.js");
+
+var _notification = require("./notification.js");
 
 // Get the time from the DOM
 var timer = document.querySelector(".timer__text > h1");
@@ -183,6 +211,7 @@ var updateCountdown = function updateCountdown() {
   _state.state.currentTimer--; // Check if the timer is finished
 
   if (_state.state.currentTimer < 0) {
+    (0, _notification.showNotification)();
     stopCountdown();
     nextTimer();
     (0, _progressRingView.updateProgressRing)(false);
@@ -302,7 +331,7 @@ document.addEventListener("keydown", function (e) {
 }); // Reset timers
 
 resetBtn.addEventListener("click", resetTimer);
-},{"./state.js":"src/js/state.js","./optionsView.js":"src/js/optionsView.js","./progressRingView.js":"src/js/progressRingView.js"}],"src/js/settingsPopupView.js":[function(require,module,exports) {
+},{"./state.js":"src/js/state.js","./optionsView.js":"src/js/optionsView.js","./progressRingView.js":"src/js/progressRingView.js","./notification.js":"src/js/notification.js"}],"src/js/settingsPopupView.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -456,9 +485,9 @@ var _settingsPopup = require("./settingsPopup");
 
 var state = {
   // All times in seconds
-  promodoro: 1500,
-  shortBreak: 300,
-  longBreak: 1200,
+  promodoro: 5,
+  shortBreak: 3,
+  longBreak: 10,
   currentInterval: "promodoro",
   currentTimer: 0,
   promodoroCount: 0,
@@ -558,8 +587,10 @@ require("./settingsPopup.js");
 
 require("./progressRingView");
 
+require("./notification.js");
+
 require("./countdown.js");
-},{"./optionsView.js":"src/js/optionsView.js","./settingsPopupView.js":"src/js/settingsPopupView.js","./settingsPopup.js":"src/js/settingsPopup.js","./progressRingView":"src/js/progressRingView.js","./countdown.js":"src/js/countdown.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./optionsView.js":"src/js/optionsView.js","./settingsPopupView.js":"src/js/settingsPopupView.js","./settingsPopup.js":"src/js/settingsPopup.js","./progressRingView":"src/js/progressRingView.js","./notification.js":"src/js/notification.js","./countdown.js":"src/js/countdown.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -587,7 +618,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38321" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46691" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

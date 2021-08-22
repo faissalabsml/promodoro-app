@@ -1,6 +1,7 @@
 import { state } from "./state.js";
 import { moveBackground } from "./optionsView.js";
 import { updateProgressRing } from "./progressRingView.js";
+import { showNotification } from "./notification.js";
 
 // Get the time from the DOM
 export const timer = document.querySelector(".timer__text > h1");
@@ -30,9 +31,12 @@ const updateCountdown = function () {
 
   // Check if the timer is finished
   if (state.currentTimer < 0) {
+    showNotification();
+
     stopCountdown();
     nextTimer();
     updateProgressRing(false);
+
     return;
   }
 
