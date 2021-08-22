@@ -1,0 +1,379 @@
+.container {
+  display: grid;
+  place-items: center;
+  height: inherit;
+}
+
+.header {
+  text-align: center;
+
+  h4 {
+    margin-top: 1.7rem;
+  }
+
+  h4 + h4 > span {
+    color: var(--accent-color);
+  }
+}
+
+.options {
+  background-color: $color-dark-2;
+  border-radius: 10rem;
+  padding: 2.4rem 0.8rem;
+  position: relative;
+  display: flex;
+  text-align: center;
+
+  .option {
+    display: inline-block;
+    width: 11.9rem;
+    position: relative;
+    z-index: 2;
+
+    &__input {
+      display: none;
+    }
+
+    &__label {
+      cursor: pointer;
+    }
+
+    &__input:checked + label {
+      color: $color-dark-1;
+    }
+
+    &__background {
+      width: 11.9rem;
+      height: 4.5rem;
+      background-color: var(--accent-color);
+      border-radius: 10rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      transition: all 0.25s cubic-bezier(0, -0.51, 0, 1.25);
+    }
+  }
+}
+
+.timer {
+  background-color: $color-dark-2;
+  width: 33rem;
+  height: 33rem;
+  border-radius: 100rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__progress {
+    position: absolute;
+
+    &--ring {
+      width: 100%;
+      height: 100%;
+    }
+
+    &--path {
+      stroke: var(--accent-color);
+    }
+  }
+
+  &__control {
+    margin-top: 1.9rem;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+
+    .reset {
+      margin-block: 1.5rem -1.9rem;
+      opacity: 0;
+      transform: translateY(200%);
+      transition: all 0.2s ease-in;
+
+      &.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &::before {
+    content: "";
+    width: 110%;
+    height: 110%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: inherit;
+    background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+
+    z-index: -1;
+  }
+
+  @include respond(big) {
+    width: 38rem;
+    height: 38rem;
+  }
+
+  @include respond(x-small) {
+    width: 32rem;
+    height: 32rem;
+  }
+}
+
+.settings-btn {
+  svg {
+    transition: all 0.2s ease-in;
+  }
+
+  button:hover {
+    svg {
+      transform: rotate(60deg);
+    }
+    svg > path {
+      opacity: 1;
+    }
+  }
+}
+
+.settings-container {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: hsla(233, 47, 7, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 99;
+  visibility: hidden;
+
+  &.active {
+    visibility: visible;
+
+    .settings {
+      transform: scale(1);
+    }
+  }
+}
+
+.settings {
+  background-color: $color-light-2;
+  color: $color-dark-2;
+  width: 54rem;
+  border-radius: 25px;
+  transform: scale(0);
+  transform-origin: 50% 130%;
+  transition: all 0.2s ease-in-out;
+
+  &__header {
+    padding: 3.4rem 4rem 3.1rem 4rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid hsla(234, 39, 14, 0.1);
+
+    .close-btn:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    padding: 0 4rem;
+  }
+
+  &__footer {
+    padding: 0 4rem;
+
+    .body-2 {
+      margin-top: 1rem;
+    }
+
+    button {
+      font-size: 1.6rem;
+      background-color: var(--accent-color);
+      padding: 1.6rem 4.7rem;
+      border-radius: 10rem;
+      color: $color-dark-1;
+      margin: 0 auto;
+      transform: translateY(50%);
+      transition: opacity 0.2s ease;
+    }
+
+    button:hover {
+      filter: brightness(120%);
+    }
+  }
+
+  @include respond(small) {
+    width: 95vw;
+  }
+
+  @include respond(x-small) {
+    width: 80vw;
+    text-align: center;
+  }
+}
+
+.form {
+  // Universal styles
+  &__row {
+    padding: 2.4rem 0;
+  }
+
+  &__inputs {
+    display: flex;
+    gap: 2rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+    color: $color-dark-clear-1;
+  }
+
+  // Styles for the first row
+  &__row:first-child {
+    h4 {
+      margin-bottom: 2.2rem;
+    }
+
+    label {
+      margin-bottom: 0.8rem;
+    }
+
+    input {
+      width: 14rem;
+      padding: 1.5rem 1.6rem;
+      border-radius: 10px;
+      background-color: $color-light-3;
+    }
+
+    .form__inputs--box {
+      position: relative;
+    }
+
+    .form__inputs--arrows {
+      display: grid;
+      gap: 0.9rem;
+      position: absolute;
+      top: 50%;
+      right: 1.6rem;
+
+      svg:hover {
+        path {
+          stroke-opacity: 1;
+        }
+      }
+
+      @include respond(x-small) {
+        top: 0.8rem;
+      }
+    }
+
+    @include respond(x-small) {
+      .form__inputs {
+        flex-direction: column;
+        gap: 0.8rem;
+
+        &--box {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  // Styles for the first and second row
+  &__row:not(:last-child) {
+    border-bottom: 1px solid hsla(234, 39, 14, 0.1);
+  }
+
+  // Styles for the second and third row
+  &__row:not(:first-child) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .form__inputs {
+      gap: 1rem;
+
+      input {
+        display: none;
+      }
+
+      label {
+        background-color: $color-light-3;
+        width: 4rem;
+        height: 4rem;
+        line-height: 1;
+        padding: 1.4rem 1rem;
+        border-radius: 100rem;
+      }
+
+      input[name="font"]:checked + label {
+        background-color: $color-dark-2;
+        color: $color-light-2;
+      }
+
+      @include respond(x-small) {
+        gap: 1.6rem;
+      }
+    }
+
+    @include respond(x-small) {
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+  }
+
+  // Styles for the last row
+  &__row:last-child {
+    .form__inputs {
+      label {
+        padding-inline: 1.25rem;
+        svg {
+          opacity: 0;
+        }
+      }
+    }
+
+    input[name="color"]:checked + label {
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Specific colors and fonts for labels
+  .form__inputs--box {
+    label[for="kumbh-sans"] {
+      font-family: "Kumbh Sans", sans-serif;
+      font-size: 1.5rem;
+    }
+
+    label[for="roboto-sans"] {
+      font-family: "Roboto Sans", sans-serif;
+      font-size: 1.5rem;
+    }
+
+    label[for="space-mono"] {
+      font-family: "Space Mono", sans-serif;
+      font-size: 1.5rem;
+    }
+    label[for="salmon"] {
+      background-color: $accent-color-salmon;
+    }
+
+    label[for="cyan"] {
+      background-color: $accent-color-cyan;
+    }
+
+    label[for="violet"] {
+      background-color: $accent-color-violet;
+    }
+  }
+}

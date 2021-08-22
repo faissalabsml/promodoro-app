@@ -1,0 +1,25 @@
+// ACCENT COLORS
+$accent-color-salmon: #f87272;
+$accent-color-cyan: #72f4f8;
+$accent-color-violet: #d882f8;
+
+// LIGHT COLORS
+$color-light-1: hsl(227, 100, 92);
+$color-light-2: hsl(0, 0, 100);
+$color-light-3: hsl(229, 52, 96);
+
+// DARK COLORS
+$color-dark-1: hsl(235, 35, 18);
+$color-dark-2: hsl(234, 39, 14);
+$color-dark-3: hsl(233, 47, 7);
+
+// Others
+$color-dark-clear-1: hsla(235, 35, 18, 0.4);
+
+// FONT
+$font: "Kumbh Sans";
+
+:root {
+  --accent-color: #{$accent-color-salmon};
+  --font: #{$font};
+}

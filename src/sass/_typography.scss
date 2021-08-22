@@ -1,0 +1,35 @@
+h1 {
+  font-size: 10rem;
+  line-height: 1.2em;
+  letter-spacing: -5px;
+}
+
+h2 {
+  font-size: 2.8rem;
+  line-height: 1.21em;
+}
+
+h3 {
+  font-size: 1.6rem;
+  line-height: 1.18em;
+  letter-spacing: 0.9em;
+  margin-right: -0.9em; // To remove the extra space for the last letter
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 1.3rem;
+  line-height: 1.23em;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.body-1 {
+  font-size: 1.4rem;
+  line-height: 1.28em;
+}
+
+.body-2 {
+  font-size: 1.2rem;
+  line-height: 1.16em;
+}

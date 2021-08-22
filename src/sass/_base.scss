@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @include respond(big) {
+    font-size: 65%;
+  }
+
+  @include respond(medium) {
+    font-size: 58%;
+  }
+
+  @include respond(small) {
+    font-size: 57%;
+  }
+
+  @include respond(x-small) {
+    font-size: 45%;
+  }
+}
+
+body {
+  font-family: var(--font);
+  color: $color-light-1;
+  background-color: $color-dark-1;
+  font-size: 1.4rem;
+  height: 100vh;
+}
+
+button {
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  display: block;
+}
+
+label {
+  display: inline-block;
+}
+
+input {
+  outline: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  color: $color-dark-1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
