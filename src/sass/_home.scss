@@ -68,8 +68,11 @@
   position: relative;
 
   &__progress {
-    position: absolute;
     width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,7 +94,7 @@
     text-align: center;
 
     .reset {
-      margin-block: 1.5rem -1.9rem;
+      margin: 1.5rem 0 -1.9rem 0;
       opacity: 0;
       transform: translateY(200%);
       transition: all 0.2s ease-in;

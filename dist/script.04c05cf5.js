@@ -485,9 +485,9 @@ var _settingsPopup = require("./settingsPopup");
 
 var state = {
   // All times in seconds
-  promodoro: 5,
-  shortBreak: 3,
-  longBreak: 10,
+  promodoro: 1500,
+  shortBreak: 300,
+  longBreak: 1200,
   currentInterval: "promodoro",
   currentTimer: 0,
   promodoroCount: 0,
@@ -618,7 +618,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46691" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38791" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
