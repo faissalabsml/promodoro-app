@@ -89,6 +89,7 @@ h1 {
   font-size: 10rem;
   line-height: 1.2em;
   letter-spacing: -5px;
+  margin-right: 5px;
 }
 
 h2 {
@@ -186,8 +187,8 @@ h4 {
 
 .timer {
   background-color: #161932;
-  width: 33rem;
-  height: 33rem;
+  width: 35.5rem;
+  height: 35.5rem;
   border-radius: 100rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -269,13 +270,6 @@ h4 {
   .timer {
     width: 38rem;
     height: 38rem;
-  }
-}
-
-@media only screen and (max-width: 31.25em) {
-  .timer {
-    width: 32rem;
-    height: 32rem;
   }
 }
 

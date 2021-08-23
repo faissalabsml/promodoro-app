@@ -58,8 +58,8 @@
 
 .timer {
   background-color: $color-dark-2;
-  width: 33rem;
-  height: 33rem;
+  width: 35.5rem;
+  height: 35.5rem;
   border-radius: 100rem;
   display: flex;
   flex-direction: column;
@@ -121,11 +121,6 @@
   @include respond(big) {
     width: 38rem;
     height: 38rem;
-  }
-
-  @include respond(x-small) {
-    width: 32rem;
-    height: 32rem;
   }
 }
 
