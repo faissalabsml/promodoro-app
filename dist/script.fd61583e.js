@@ -143,7 +143,33 @@ var updateProgressRing = function updateProgressRing() {
 };
 
 exports.updateProgressRing = updateProgressRing;
-},{"./state.js":"Oken"}],"Ha47":[function(require,module,exports) {
+},{"./state.js":"Oken"}],"ln3R":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.showNotification = void 0;
+
+var _state = require("./state");
+
+var showNotification = function showNotification() {
+  var notification = new Notification("Promodoro App", {
+    body: "".concat(_state.state.currentInterval, " has finished"),
+    icon: "./src/assets/favicon-32x32.png"
+  });
+};
+
+exports.showNotification = showNotification;
+Notification.requestPermission(); // if (Notification.permission === "granted") {
+//   showNotification();
+// }
+// if (Notification.permission !== "denied") {
+//   Notification.requestPermission().then((permission) => {
+//     if (permission === "granted") showNotification();
+//   });
+// }
+},{"./state":"Oken"}],"Ha47":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -156,6 +182,8 @@ var _state = require("./state.js");
 var _optionsView = require("./optionsView.js");
 
 var _progressRingView = require("./progressRingView.js");
+
+var _notification = require("./notification.js");
 
 // Get the time from the DOM
 var timer = document.querySelector(".timer__text > h1");
@@ -183,6 +211,7 @@ var updateCountdown = function updateCountdown() {
   _state.state.currentTimer--; // Check if the timer is finished
 
   if (_state.state.currentTimer < 0) {
+    (0, _notification.showNotification)();
     stopCountdown();
     nextTimer();
     (0, _progressRingView.updateProgressRing)(false);
@@ -302,7 +331,7 @@ document.addEventListener("keydown", function (e) {
 }); // Reset timers
 
 resetBtn.addEventListener("click", resetTimer);
-},{"./state.js":"Oken","./optionsView.js":"ou0b","./progressRingView.js":"Xqco"}],"jzDc":[function(require,module,exports) {
+},{"./state.js":"Oken","./optionsView.js":"ou0b","./progressRingView.js":"Xqco","./notification.js":"ln3R"}],"jzDc":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -558,6 +587,8 @@ require("./settingsPopup.js");
 
 require("./progressRingView");
 
+require("./notification.js");
+
 require("./countdown.js");
-},{"./optionsView.js":"ou0b","./settingsPopupView.js":"jzDc","./settingsPopup.js":"sAUw","./progressRingView":"Xqco","./countdown.js":"Ha47"}]},{},["MO7r"], null)
-//# sourceMappingURL=/script.a04ec68e.js.map
+},{"./optionsView.js":"ou0b","./settingsPopupView.js":"jzDc","./settingsPopup.js":"sAUw","./progressRingView":"Xqco","./notification.js":"ln3R","./countdown.js":"Ha47"}]},{},["MO7r"], null)
+//# sourceMappingURL=/script.fd61583e.js.map
