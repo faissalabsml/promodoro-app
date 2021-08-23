@@ -164,21 +164,7 @@ var showNotification = function showNotification() {
 };
 
 exports.showNotification = showNotification;
-Notification.requestPermission(); // if (Notification.permission === "granted") {
-//   showNotification();
-// }
-// if (Notification.permission !== "denied") {
-//   Notification.requestPermission().then((permission) => {
-//     if (permission === "granted") showNotification();
-//   });
-// }
-// Notification.requestPermission(function(result) {
-//   if (result === 'granted') {
-//     navigator.serviceWorker.ready.then(function(registration) {
-//       registration.showNotification('Notification with ServiceWorker');
-//     });
-//   }
-// });
+Notification.requestPermission();
 },{"./state":"src/js/state.js"}],"src/js/countdown.js":[function(require,module,exports) {
 "use strict";
 
@@ -221,7 +207,9 @@ var updateCountdown = function updateCountdown() {
   _state.state.currentTimer--; // Check if the timer is finished
 
   if (_state.state.currentTimer < 0) {
-    (0, _notification.showNotification)();
+    navigator.serviceWorker.ready.then(function (registration) {
+      registration.showNotification("test");
+    });
     stopCountdown();
     nextTimer();
     (0, _progressRingView.updateProgressRing)(false);
@@ -628,7 +616,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41845" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45979" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
