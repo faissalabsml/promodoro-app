@@ -6,8 +6,8 @@ export const showNotification = function () {
     icon: "./src/assets/favicon-32x32.png",
   });
 
-  navigator.serviceWorker.ready.then(function (registration) {
-    registration.showNotification(notification);
+  navigator.serviceWorker.ready.then((registration) => {
+    registration.showNotification("test");
   });
 };
 
