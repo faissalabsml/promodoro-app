@@ -5,10 +5,6 @@ export const showNotification = function () {
     body: `${state.currentInterval} has finished`,
     icon: "./src/assets/favicon-32x32.png",
   });
-
-  navigator.serviceWorker.ready.then((registration) => {
-    registration.showNotification("test");
-  });
 };
 
 Notification.requestPermission();

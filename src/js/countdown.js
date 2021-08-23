@@ -31,7 +31,9 @@ const updateCountdown = function () {
 
   // Check if the timer is finished
   if (state.currentTimer < 0) {
-    showNotification();
+    navigator.serviceWorker.ready.then((registration) => {
+      registration.showNotification("test");
+    });
 
     stopCountdown();
     nextTimer();
