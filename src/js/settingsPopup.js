@@ -20,9 +20,13 @@ const applySettings = function () {
     const key = input.dataset.change;
     const value = input.value;
 
-    key === "font" || key === "accentColor"
-      ? (state[key] = value)
-      : (state[key] = value * 60);
+    if (key === "font" || key === "accentColor") {
+      state[key] = value;
+    } else {
+      if (value <= 0) return;
+
+      state[key] = value * 60;
+    }
   });
 
   if (controlBtn.textContent !== "start") {

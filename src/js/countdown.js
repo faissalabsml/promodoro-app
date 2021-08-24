@@ -15,9 +15,10 @@ let countdown;
 
 // Start countdown function
 const startCountdown = function () {
-  // Get the timer displayed on the IU and save it in the state object (in seconds)
+  // Get the timer displayed on the UI and save it in the state object (in seconds)
   state.currentTimer =
-    +timer.textContent.split(":")[0] * 60 + +timer.textContent.split(":")[1];
+    Number(timer.textContent.split(":")[0]) * 60 +
+    Number(timer.textContent.split(":")[1]);
 
   state.isRunning = true;
 
@@ -78,9 +79,12 @@ const nextTimer = function () {
       break;
   }
 
-  if (state.currentInterval === "promodoro" && state.promodoroCount === 3)
+  if (state.currentInterval === "promodoro" && state.promodoroCount === 3) {
     nextSession.textContent = "long break";
-  if (state.promodoroCount === 4) state.currentInterval = "longBreak";
+  }
+  if (state.promodoroCount === 4) {
+    state.currentInterval = "longBreak";
+  }
 
   localStorage.setItem("state", JSON.stringify(state));
 
